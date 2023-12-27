@@ -35,7 +35,7 @@ esp32s3 = ["esp32s3-hal"]
 dprint  = []
 
 [profile.release]
-opt-level     = "z"
+opt-level     = 2
 codegen-units = 1
 lto           = true
 panic         = "abort"
