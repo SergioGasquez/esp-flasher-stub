@@ -55,7 +55,7 @@ pub enum CommandCode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C, packed(1))]
 pub struct CommandBase {
-    pub direction: u8,
+    pub direction: Direction,
     pub code: CommandCode,
     pub size: u16,
     pub checksum: u32,
