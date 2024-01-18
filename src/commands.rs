@@ -192,8 +192,8 @@ pub struct ReadFlashCommand {
 #[repr(u8)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Direction {
-    In,
-    Out,
+    In = 0x00,
+    Out = 0x01,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
