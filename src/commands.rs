@@ -19,11 +19,18 @@ pub enum Error {
     TooMuchData = 0xC9,
     CmdNotImplemented = 0xFF,
 
+    /// Error on esp_rom_spiflash_read
     Err0x63 = 0x63,
-    Err0x32 = 0x32,
-    Err0x33 = 0x33,
-    Err0x34 = 0x34,
-    Err0x35 = 0x35,
+    /// Error if the modulus of the flash address to be erased divided by
+    /// FLASH_SECTOR_SIZE is not equal to zero.
+    Err0x32 = 0x32, // TODO: Never used
+    /// Error if the modulus of the flash length to be erased divided by
+    /// FLASH_SECTOR_SIZE is not equal to zero.
+    Err0x33 = 0x33, // TODO: Never used
+    /// Error on esp_rom_spiflash_unlock
+    Err0x34 = 0x34, // TODO: Never used
+    /// Error in esp_rom_spiflash_erase_sector
+    Err0x35 = 0x35, // TODO: Never used
 
     EraseErr = 0x36, // TODO: Is it OK to add custom Error?
 }
