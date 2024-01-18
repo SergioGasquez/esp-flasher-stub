@@ -194,8 +194,33 @@ pub struct SpiSetParamsCommand {
     pub params: SpiParams,
 }
 
-// TODO: SpiAttachCommand  (ROM)
-// TODO: SpiAttachStubCommand ? (STUB)
+/// Parameters for attaching to a target devices SPI flash
+// TODO: Possibly move to other module
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[repr(C, packed(1))]
+pub struct SpiAttachParams {
+    /// CLK pin
+    clk: u8,
+    /// Q pin
+    q: u8,
+    /// D pin
+    d: u8,
+    /// HD pin
+    hd: u8,
+    /// CS pin
+    cs: u8,
+}
+
+/// SPI_ATTACH command input data
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[repr(C, packed(1))]
+pub struct SpiAttachCommand {
+    pub base: CommandBase,
+    /// SPI attach parameters
+    pub params: SpiAttachParams,
+    // TODO: On ROM loader, there  there is an additional 4 bytes in the data payload of this
+    // command. These bytes should all be set to zero.
+}
 
 /// CHANGE_BAUDRATE command input data
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
