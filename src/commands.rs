@@ -73,7 +73,7 @@ pub struct SyncCommand {
 pub struct BeginCommand {
     pub base: CommandBase,
     pub total_size: u32,
-    pub packt_count: u32,
+    pub packet_count: u32,
     pub packet_size: u32,
     pub offset: u32,
 }

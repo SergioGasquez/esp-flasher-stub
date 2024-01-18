@@ -130,7 +130,7 @@ impl<T: InputIO> Stub<T> {
         self.erase_addr = cmd.offset & FLASH_SECTOR_MASK;
         self.write_addr = cmd.offset;
         self.end_addr = cmd.offset + cmd.total_size;
-        self.remaining_compressed = (cmd.packt_count * cmd.packet_size) as usize;
+        self.remaining_compressed = (cmd.packet_count * cmd.packet_size) as usize;
         self.remaining = cmd.total_size;
         self.decompressor.state = 0;
         self.in_flash_mode = true;
