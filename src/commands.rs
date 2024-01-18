@@ -2,6 +2,7 @@
 pub const RESPONSE_SIZE: usize = 10;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[repr(u8)]
 pub enum Error {
     BadDataLen = 0xC0,
     BadDataChecksum = 0xC1,
@@ -25,6 +26,7 @@ pub enum Error {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[repr(u8)]
 pub enum CommandCode {
     FlashBegin = 0x02,
     FlashData = 0x03,
