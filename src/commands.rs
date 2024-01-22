@@ -41,6 +41,7 @@ pub enum Error {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u8)]
 pub enum CommandCode {
+    // Commands supported by the ESP8266 and all the ESP32 variants bootloaders
     FlashBegin = 0x02,
     FlashData = 0x03,
     FlashEnd = 0x04,
@@ -50,6 +51,7 @@ pub enum CommandCode {
     Sync = 0x08,
     WriteReg = 0x09,
     ReadReg = 0x0A,
+    // Commands supported by all the ESP32 variants bootloaders
     SpiSetParams = 0x0B,
     SpiAttach = 0x0D,
     ChangeBaudrate = 0x0F,
@@ -57,11 +59,14 @@ pub enum CommandCode {
     FlashDeflData = 0x11,
     FlashDeflEnd = 0x12,
     SpiFlashMd5 = 0x13,
+    // Not supported on ESP32
     GetSecurityInfo = 0x14,
+    // Stub-only commands
     EraseFlash = 0xD0,
     EraseRegion = 0xD1,
     ReadFlash = 0xD2,
     RunUserCode = 0xD3,
+    // Flash encryption debug mode supported command
     FlashEncryptedData = 0xD4,
 }
 
@@ -277,7 +282,7 @@ pub struct ReadFlashParams {
     /// Size of each individual packet of data
     pub packet_size: u32,
     /// Maximum number of un-acked packets
-    pub max_inflight: u32,
+    pub max_in_flight: u32,
 }
 
 /// READ_FLASH command input data

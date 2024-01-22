@@ -364,10 +364,10 @@ impl<T: InputIO> Stub<T> {
         let mut ack_buf: [u8; 4] = [0; 4];
         let mut hasher = Context::new();
         let mut sent = 0;
-        let max_inflight_bytes = params.max_inflight * params.packet_size;
+        let max_in_flight_bytes = params.max_in_flight * params.packet_size;
 
         while acked < params.total_size {
-            while remaining > 0 && sent < (acked + max_inflight_bytes) {
+            while remaining > 0 && sent < (acked + max_in_flight_bytes) {
                 let len = min(params.packet_size, remaining);
                 self.target
                     .spi_flash_read(address, &mut buffer[..len as usize])?;
