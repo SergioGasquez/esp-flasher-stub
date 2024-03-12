@@ -34,3 +34,6 @@ codegen-units = 1
 lto           = true
 panic         = "abort"
 debug         = true
+
+[patch.crates-io]
+esp-hal = { git = "https://github.com/SergioGasquez/esp-hal", branch = "feat/xtal-clock" }
